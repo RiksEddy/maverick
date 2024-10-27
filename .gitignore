@@ -136,3 +136,7 @@ yarn.lock
 
 #virtual environment
 .venv/
+mavenv/
+
+#pycache
+__pycache__/
