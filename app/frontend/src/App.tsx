@@ -9,7 +9,7 @@ function App() {
 
   const callBackend = async () => {
     try {
-      const response = await fetch('http://localhost:8000/')
+      const response = await fetch('http://rikseddypi.local:8000/')
       const data = await response.json()
       setApiResponse(data.message || JSON.stringify(data))
     } catch (error) {
