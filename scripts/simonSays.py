@@ -168,13 +168,9 @@ async def main():
     print("Game will run for 1 minute")
     await asyncio.sleep(2)
     
-    # Choose initial target color
-    game.choose_target_color()
-    
     # Create tasks
     monitor_task = asyncio.create_task(shot_sensor.monitor_shots())
     color_cycle_task = asyncio.create_task(game.cycle_colors())
-    score_task = asyncio.create_task(game.print_score_and_time())
     
     try:
         print("Game starting in:")
@@ -184,7 +180,7 @@ async def main():
         print("GO!")
         
         # Wait for all tasks
-        await asyncio.gather(monitor_task, color_cycle_task, score_task)
+        await asyncio.gather(monitor_task, color_cycle_task)
         
     except asyncio.CancelledError:
         print("Game cancelled!")
