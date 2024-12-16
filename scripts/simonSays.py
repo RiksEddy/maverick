@@ -59,6 +59,7 @@ class ShotSensor:
     async def monitor_shots(self):
         while True:
             if self.apds.isGestureAvailable():
+                print("Gesture detected")
                 gesture = self.apds.readGesture()
                 if gesture == APDS9960_DIR_DOWN:
                     self.shot_detected = True
@@ -98,6 +99,7 @@ class SimonSaysGame:
                 await asyncio.sleep(5)  # Show each color for 5 seconds
                 
                 if self.shot_sensor.shot_detected:
+                    print(f"Shot detected during {self.led_strip.current_color}")
                     if self.led_strip.current_color == self.target_color:
                         print("Great shot! +1 point")
                         self.score += 1
