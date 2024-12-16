@@ -109,6 +109,9 @@ class SimonSaysGame:
                     self.shot_sensor.reset_shot()
         
         self.game_active = False
+        self.led_strip.turn_off()
+        print("\nGame Over!")
+        print(f"Final score: {game.score}")
                     
     async def print_score_and_time(self):
         while self.game_active:
@@ -150,11 +153,6 @@ async def main():
         print("Game cancelled!")
     except Exception as e:
         print(f"Error occurred: {e}")
-    finally:
-        game.game_active = False
-        led_strip.turn_off()
-        print("\nGame Over!")
-        print(f"Final score: {game.score}")
 
 if __name__ == "__main__":
     try:
