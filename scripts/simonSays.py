@@ -61,9 +61,9 @@ class ShotSensor:
             if self.apds.isGestureAvailable():
                 print("Gesture detected")
                 gesture = self.apds.readGesture()
-                if gesture == APDS9960_DIR_DOWN:
-                    self.shot_detected = True
-            await asyncio.sleep(0.1)
+                #if gesture == APDS9960_DIR_DOWN:
+                self.shot_detected = True
+            await asyncio.sleep(0.5)
             
     def reset_shot(self):
         self.shot_detected = False
