@@ -120,7 +120,6 @@ async def main():
         
     except asyncio.CancelledError:
         led_strip.turn_off()
-        await asyncio.sleep(1)
         print("Game cancelled!")
     except Exception as e:
         print(f"Error occurred: {e}")
