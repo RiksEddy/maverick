@@ -1,8 +1,8 @@
 import asyncio
 import random
 import time
-from ledStrip import LEDStrip
-from shotSensor import ShotSensor
+from modules.ledStrip import LEDStrip
+from modules.shotSensor import ShotSensor
 
 class SimonSaysGame:
     def __init__(self, led_strip, shot_sensor):
