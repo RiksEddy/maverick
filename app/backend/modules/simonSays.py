@@ -95,6 +95,32 @@ class SimonSaysGame:
         print("\nGame Over!")
         print(f"Final score: {self.score}")
 
+    async def start(self):
+        print("\nWelcome to Simon Says!")
+        print("Game will run for 1 minute")
+        await asyncio.sleep(2)
+        
+        # Create tasks
+        monitor_task = asyncio.create_task(self.shot_sensor.monitor_shots())
+        color_cycle_task = asyncio.create_task(self.cycle_colors())
+        
+        try:
+            print("Game starting in:")
+            for i in range(3, 0, -1):
+                print(f"{i}...")
+                await asyncio.sleep(1)
+            print("GO!")
+            
+            # Wait for all tasks
+            await asyncio.gather(monitor_task, color_cycle_task)
+            
+        except asyncio.CancelledError:
+            self.led_strip.turn_off()
+            print("Game cancelled!")
+        except Exception as e:
+            print(f"Error occurred: {e}")
+
+
 async def main():
     led_strip = LEDStrip()
     shot_sensor = ShotSensor()
