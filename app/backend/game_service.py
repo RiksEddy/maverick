@@ -17,9 +17,9 @@ class GameService:
             cls._instance = GameService()
         return cls._instance
     
-    def start_new_game(self) -> None:
+    async def start_new_game(self) -> None:
         self.current_game = SimonSaysGame(self.led_strip, self.shot_sensor)
-        self.current_game.start()
+        await self.current_game.start()
     
     def get_game_status(self) -> dict:
         if not self.current_game:

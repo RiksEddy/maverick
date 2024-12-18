@@ -21,7 +21,7 @@ app.add_middleware(
 @app.get("/start-game")
 async def start_game():
     game_service = GameService.get_instance()
-    game_service.start_new_game()
+    await game_service.start_new_game()
     return {"message": "Game started"}
 
 @app.get("/game-status")
