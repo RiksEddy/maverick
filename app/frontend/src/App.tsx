@@ -31,7 +31,7 @@ function App() {
           <div className="text-yellow-500 mb-4">Connecting to game server...</div>
         )}
         
-        {connected && gameStatus?.status === "no_game" && (
+        {connected && (gameStatus?.status === "no_game" || gameStatus?.status === "default_mode") && (
           <button
             onClick={startGame}
             className="bg-green-500 hover:bg-green-600 px-6 py-3 rounded-lg font-bold"
