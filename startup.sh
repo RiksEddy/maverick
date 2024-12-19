@@ -10,8 +10,8 @@ git pull
 cd app/backend
 python3 main.py &                                                                             
 
-# Wait a few seconds
-sleep 5
+# Wait a second
+sleep 1
 
 # Start frontend
 cd ../frontend
