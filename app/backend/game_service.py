@@ -3,6 +3,7 @@ from modules.simonSays import SimonSaysGame
 from modules.defaultGame import DefaultGame
 from modules.ledStrip import LEDStrip
 from modules.shotSensor import ShotSensor
+import asyncio
 
 class GameService:
     _instance: Optional['GameService'] = None
@@ -13,6 +14,8 @@ class GameService:
         self.default_game = DefaultGame(self.led_strip, self.shot_sensor)
         self.simon_says_game: Optional[SimonSaysGame] = None
         self.current_game: Union[DefaultGame, SimonSaysGame] = self.default_game
+        # Start default game monitoring
+        asyncio.create_task(self.default_game.start())
     
     @classmethod
     def get_instance(cls) -> 'GameService':

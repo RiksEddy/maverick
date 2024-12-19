@@ -8,6 +8,7 @@ from connection_manager import ConnectionManager
 
 app = FastAPI()
 manager = ConnectionManager()
+game_service = GameService.get_instance()
 
 # CORS middleware setup
 app.add_middleware(
@@ -32,7 +33,6 @@ async def game_status():
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
     await manager.connect(websocket)
-    game_service = GameService.get_instance()
     
     try:
         while True:
