@@ -120,6 +120,16 @@ class SimonSaysGame:
         except Exception as e:
             print(f"Error occurred: {e}")
 
+    def get_status(self) -> dict:
+        """Get current game status"""
+        return {
+            "status": "simon_says",
+            "score": self.score,
+            "sequence": self.sequence,
+            "current_index": self.current_sequence_index,
+            "game_active": self.game_active,
+            "current_color": self.led_strip.current_color
+        }
 
 async def main():
     led_strip = LEDStrip()

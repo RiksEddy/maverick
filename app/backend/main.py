@@ -36,6 +36,7 @@ async def websocket_endpoint(websocket: WebSocket):
     
     try:
         while True:
+            await game_service.handle_game_loop()
             status = game_service.get_game_status()
             await manager.broadcast(status)
             await asyncio.sleep(0.1)

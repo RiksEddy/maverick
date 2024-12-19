@@ -6,6 +6,16 @@ interface GameDisplayProps {
 }
 
 export const GameDisplay: React.FC<GameDisplayProps> = ({ gameStatus }) => {
+  if (gameStatus.status === "default_mode") {
+    return (
+      <div className="space-y-6">
+        <div className="text-2xl">Shot Counter Mode</div>
+        <div className="text-4xl font-bold">Shots: {gameStatus.score}</div>
+        <div className="text-gray-400">Click "Start Game" to play Simon Says!</div>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6">
       <div className="text-2xl">Score: {gameStatus.score}</div>
