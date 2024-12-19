@@ -44,5 +44,4 @@ class DefaultGame:
             "game_active": self.game_active,
             "current_color": self.led_strip.current_color
         }
-        print(f"Current game status: {status}")  # Debug print
         return status 
