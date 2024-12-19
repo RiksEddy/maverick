@@ -140,3 +140,6 @@ mavenv/
 
 #pycache
 __pycache__/
+
+#config
+config.json
