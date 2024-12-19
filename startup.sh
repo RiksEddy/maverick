@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set working directory
-cd $HOME/maverick
+cd /home/maverick
 
 # Pull latest changes
 git pull
