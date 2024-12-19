@@ -15,14 +15,22 @@ class GameService:
         self.default_game = DefaultGame(self.led_strip, self.shot_sensor)
         self.simon_says_game: Optional[SimonSaysGame] = None
         self.current_game: Union[DefaultGame, SimonSaysGame] = self.default_game
-        # Start default game monitoring
-        asyncio.create_task(self.default_game.start())
-        print("GameService initialized and default game started")  # Debug print
+        print("GameService initialized")  # Debug print
+    
+    @classmethod
+    async def initialize(cls) -> 'GameService':
+        """Initialize the GameService and start the default game"""
+        if cls._instance is None:
+            cls._instance = GameService()
+            # Start default game monitoring
+            await cls._instance.default_game.start()
+            print("Default game started")  # Debug print
+        return cls._instance
     
     @classmethod
     def get_instance(cls) -> 'GameService':
         if cls._instance is None:
-            cls._instance = GameService()
+            raise RuntimeError("GameService must be initialized with initialize() first")
         return cls._instance
     
     async def start_new_game(self) -> None:

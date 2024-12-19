@@ -8,7 +8,12 @@ from connection_manager import ConnectionManager
 
 app = FastAPI()
 manager = ConnectionManager()
-game_service = GameService.get_instance()
+
+@app.on_event("startup")
+async def startup_event():
+    """Initialize the GameService when the application starts"""
+    global game_service
+    game_service = await GameService.initialize()
 
 # CORS middleware setup
 app.add_middleware(
