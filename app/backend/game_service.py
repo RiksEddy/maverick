@@ -9,6 +9,7 @@ class GameService:
     _instance: Optional['GameService'] = None
     
     def __init__(self):
+        print("Initializing GameService...")  # Debug print
         self.led_strip = LEDStrip()
         self.shot_sensor = ShotSensor()
         self.default_game = DefaultGame(self.led_strip, self.shot_sensor)
@@ -16,6 +17,7 @@ class GameService:
         self.current_game: Union[DefaultGame, SimonSaysGame] = self.default_game
         # Start default game monitoring
         asyncio.create_task(self.default_game.start())
+        print("GameService initialized and default game started")  # Debug print
     
     @classmethod
     def get_instance(cls) -> 'GameService':
