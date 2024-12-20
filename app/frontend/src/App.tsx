@@ -3,7 +3,9 @@ import { useGameControl } from './hooks/useGameControl';
 import { GameDisplay } from './components/GameDisplay';
 
 function App() {
-  const { connected, gameStatus } = useWebSocket('ws://rikseddypi.local:8000/ws');
+  const hostname = window.location.hostname;
+  const wsUrl = `ws://${hostname}:8000/ws`;
+  const { connected, gameStatus } = useWebSocket(wsUrl);
   const { startGame, error } = useGameControl();
 
   // Add this to debug the values
