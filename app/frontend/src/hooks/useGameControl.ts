@@ -6,8 +6,9 @@ export const useGameControl = () => {
 
   const startGame = async () => {
     try {
-      await fetch('http://rikseddypi.local:8000/start-game');
-      const response = await fetch('http://rikseddypi.local:8000/game-status');
+      const hostname = window.location.hostname;
+      await fetch(`http://${hostname}:8000/start-game`);
+      const response = await fetch(`http://${hostname}:8000/game-status`);
       const status: GameStatus = await response.json();
       return status;
     } catch (error) {
