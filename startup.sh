@@ -11,7 +11,7 @@ cd app/backend
 python3 main.py &                                                                             
 
 # Wait a second
-sleep 1
+sleep 5
 
 # Start frontend
 cd ../frontend
