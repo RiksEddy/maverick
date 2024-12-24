@@ -6,7 +6,7 @@ with open('/home/maverick/config.json') as config_file:
     config = json.load(config_file)
 
 # LED strip configuration:
-LED_COUNT = config["number_of_LEDs"]  # Set LED_COUNT from config
+LED_COUNT = config["number_of_LEDS"]  # Set LED_COUNT from config
 LED_PIN = 18          # GPIO pin connected to the pixels (18 uses PWM!).
 LED_FREQ_HZ = 800000  # LED signal frequency in hertz
 LED_DMA = 10          # DMA channel to use for generating signal
