@@ -5,7 +5,7 @@ import { GameDisplay } from './components/GameDisplay';
 function App() {
   const hostname = window.location.hostname;
   const wsUrl = "ws://ritishpi.local:8000/ws";
-  const { connected, gameStatus } = useWebSocket('http://ritishpi.local:8000/ws');
+  const { connected, gameStatus } = useWebSocket('ws://ritishpi.local:8000/ws');
   const { startGame, error } = useGameControl();
 
   // Add this to debug the values
