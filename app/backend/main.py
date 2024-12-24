@@ -18,7 +18,7 @@ async def startup_event():
 # CORS middleware setup
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["http://ritishpi.local:5173"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
