@@ -15,16 +15,11 @@ function App() {
     <div className="min-h-screen bg-gray-900 text-white p-8">
       <div className="max-w-2xl mx-auto">
         <h1 className="text-4xl font-bold mb-8">Simon Says</h1>
-        
-        {/* Add this to show the current state 
+
+        {/* Add this to show the hostname*/}
         <div className="mb-4 text-gray-400">
-          Debug Info:
-          <br />
-          Connected: {String(connected)}
-          <br />
-          Game Status: {JSON.stringify(gameStatus)}
+          Hostname: {hostname}
         </div>
-        */}
         
         {error && (
           <div className="text-red-500 mb-4">{error}</div>
