@@ -12,6 +12,7 @@ export const useWebSocket = (url: string) => {
       ws = new WebSocket(url);
       
       ws.onopen = () => {
+        console.log('WebSocket connection established');
         setConnected(true);
       };
 
@@ -20,10 +21,15 @@ export const useWebSocket = (url: string) => {
         setGameStatus(data);
       };
 
-      ws.onclose = () => {
+      ws.onclose = (event) => {
+        console.log('WebSocket connection closed:', event);
         setConnected(false);
         // Attempt to reconnect after 1 second
         setTimeout(connect, 1000);
+      };
+
+      ws.onerror = (error) => {
+        console.error('WebSocket error:', error);
       };
     };
 
