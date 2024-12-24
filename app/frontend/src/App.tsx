@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-900 text-white p-8">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8">Simon Says</h1>
+        <h1 className="text-4xl font-bold mb-8">Project Maverick</h1>
 
         {/* Add this to debug
         <div className="mb-4 text-gray-400">
