@@ -3,8 +3,6 @@ import { useGameControl } from './hooks/useGameControl';
 import { GameDisplay } from './components/GameDisplay';
 
 function App() {
-  const hostname = window.location.hostname;
-  const wsUrl = "ws://ritishpi.local:8000/ws";
   const { connected, gameStatus } = useWebSocket('ws://192.168.254.92:8000/ws');
   const { startGame, error } = useGameControl();
 
@@ -16,12 +14,12 @@ function App() {
       <div className="max-w-2xl mx-auto">
         <h1 className="text-4xl font-bold mb-8">Simon Says</h1>
 
-        {/* Add this to debug*/}
+        {/* Add this to debug
         <div className="mb-4 text-gray-400">
           Backend URL: {wsUrl}
           Connected: {String(connected)}
           Game Status: {JSON.stringify(gameStatus)}
-        </div>
+        </div> */}
         
         {error && (
           <div className="text-red-500 mb-4">{error}</div>
@@ -31,6 +29,8 @@ function App() {
           <div className="text-yellow-500 mb-4">Connecting to game server...</div>
         )}
         
+        {gameStatus && <GameDisplay gameStatus={gameStatus} />}
+
         {connected && (gameStatus?.status === "no_game" || gameStatus?.status === "default_mode") && (
           <button
             onClick={startGame}
@@ -39,8 +39,6 @@ function App() {
             Start Game
           </button>
         )}
-        
-        {gameStatus && <GameDisplay gameStatus={gameStatus} />}
       </div>
     </div>
   );
