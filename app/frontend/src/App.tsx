@@ -18,7 +18,7 @@ function App() {
 
         {/* Add this to show the hostname*/}
         <div className="mb-4 text-gray-400">
-          Hostname: {hostname}
+          Backend URL: {wsUrl}
         </div>
         
         {error && (
