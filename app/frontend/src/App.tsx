@@ -3,7 +3,7 @@ import { useGameControl } from './hooks/useGameControl';
 import { GameDisplay } from './components/GameDisplay';
 
 function App() {
-  const { connected, gameStatus } = useWebSocket('ws://rikseddypi.local:8000/ws');
+  const { connected, gameStatus } = useWebSocket('ws://ritishpi.local:8000/ws');
   const { startGame, error } = useGameControl();
 
   // Add this to debug the values
