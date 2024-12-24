@@ -6,8 +6,8 @@ export const useGameControl = () => {
 
   const startGame = async () => {
     try {
-      await fetch('http://ritishpi.local:8000/start-game');
-      const response = await fetch('http://ritishpi.local:8000/game-status');
+      await fetch('http://ritishpi.local:3143/start-game');
+      const response = await fetch('http://ritishpi.local:3143/game-status');
       const status: GameStatus = await response.json();
       return status;
     } catch (error) {

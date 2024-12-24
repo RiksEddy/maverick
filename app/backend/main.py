@@ -40,6 +40,7 @@ async def websocket_endpoint(websocket: WebSocket):
     await manager.connect(websocket)
     
     try:
+        print("Starting game loop")
         while True:
             await game_service.handle_game_loop()
             status = game_service.get_game_status()
@@ -49,4 +50,4 @@ async def websocket_endpoint(websocket: WebSocket):
         manager.disconnect(websocket)
 
 if __name__ == '__main__':
-    uvicorn.run(app, host='0.0.0.0', port=8000)
+    uvicorn.run(app, host='0.0.0.0', port=3143)
