@@ -16,9 +16,11 @@ function App() {
       <div className="max-w-2xl mx-auto">
         <h1 className="text-4xl font-bold mb-8">Simon Says</h1>
 
-        {/* Add this to show the hostname*/}
+        {/* Add this to debug*/}
         <div className="mb-4 text-gray-400">
           Backend URL: {wsUrl}
+          Connected: {String(connected)}
+          Game Status: {JSON.stringify(gameStatus)}
         </div>
         
         {error && (
