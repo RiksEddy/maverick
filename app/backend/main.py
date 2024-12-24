@@ -37,15 +37,21 @@ async def game_status():
 
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
+    print("WebSocket connection established")
     await manager.connect(websocket)
     
     try:
         while True:
+            print("Game loop started")
             await game_service.handle_game_loop()
+            print("Game loop ended")
             status = game_service.get_game_status()
+            print("Broadcasting game status")
             await manager.broadcast(status)
+            print("Game status broadcasted")
             await asyncio.sleep(0.1)
     except WebSocketDisconnect:
+        print("WebSocket connection closed")
         manager.disconnect(websocket)
 
 if __name__ == '__main__':
