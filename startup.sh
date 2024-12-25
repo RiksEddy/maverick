@@ -1,13 +1,9 @@
 #!/bin/bash
 
 # Set working directory
-cd /home/maverick
-
-# Pull latest changes
-git pull
+cd /home/maverick/app/backend
 
 # Start backend
-cd app/backend
 python3 main.py &                                                                             
 
 # Wait a few seconds
